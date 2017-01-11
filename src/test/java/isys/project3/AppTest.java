@@ -1,4 +1,4 @@
-package isys.project3;
+package test.java.isys.project3;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
