@@ -22,6 +22,12 @@ public class FishReader {
 		this.fishList = fishList;
 	}
 
+	
+	public FishReader(Fish f)
+	{
+		this.fishList=new ArrayList<Fish>();
+		this.fishList.add(f);
+	}
 	/**
 	 * Constructor
 	 * Reads the file and holds a list of all fishes in the file.

@@ -1,9 +1,12 @@
 package main.java.isys.project3;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.jscience.mathematics.number.Float64;
 import org.jscience.mathematics.vector.Float64Vector;
 
 public class Fish {
@@ -68,5 +71,31 @@ public class Fish {
 			return 2d;
 		}
 		return 3d;
+	}
+	public int compareToMarkovChances(ArrayList<MarkovChances> markovs, double k){
+		MarkovChances thisChances=new MarkovChances(new FishReader(this),k);
+		double[] sums=new double[markovs.size()];
+		ArrayList<ArrayList<ArrayList<Float64>>> markovsRelativeResults = new ArrayList<ArrayList<ArrayList<Float64>>>();
+		
+		for(int ic=0;ic<markovs.size();ic++){
+			MarkovChances mic=markovs.get(ic);
+			markovsRelativeResults.add(new ArrayList<ArrayList<Float64>>());
+			sums[ic]=0;
+			for (int i=0;i<mic.getRelativchances().size();i++) {
+				markovsRelativeResults.get(ic).add(new ArrayList<Float64>());
+				for (int j=0;j<mic.getRelativchances().get(i).size();j++) {
+					sums[ic]+=Math.abs(markovs.get(ic).getRelativchances().get(i).get(j).minus(thisChances.getRelativchances().get(i).get(j)).doubleValue());
+				}
+			}	
+		}
+		double minVal=Double.MAX_VALUE;
+		int minIndex=0;
+		for(int reti=0;reti<sums.length;reti++){
+			if(sums[reti]<=minVal){
+				minVal=sums[reti];
+				minIndex=reti;	
+			}			
+		}
+		return minIndex;
 	}
 }
