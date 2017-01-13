@@ -24,11 +24,8 @@ public class MarkovChances {
 		chances = new ArrayList<ArrayList<Float64>>(9);
 		relativchances = new ArrayList<ArrayList<Float64>>(9);
 		
-		for (int i=0;i<3;i++) {
-			relativchances.add(new ArrayList<Float64>(3));
-		}
-		
 		for(int i = 0 ; i < 9; i++){
+			relativchances.add(new ArrayList<Float64>(9));
 			chances.add(new ArrayList<Float64>(9));
 			for(int j = 0 ; j < 9; j++){
 				chances.get(i).add(Float64.valueOf(0d));
@@ -48,17 +45,17 @@ public class MarkovChances {
 		
 		//set all relativ chances in table
 		double counter = 0d;
-		for (int i=0;i<3;i++) {
-			for (int j=0;j<3;j++) {
+		for (int i=0;i<9;i++) {
+			for (int j=0;j<9;j++) {
 				counter +=chances.get(i).get(j).doubleValue();
 			}
-			for (int j=0;j<3;j++) {
+			for (int j=0;j<9;j++) {
 				relativchances.get(i).add((chances.get(i).get(j).divide(counter)));
 			}
 			counter = 0;
 		}
-		System.out.println(chances);
-		System.out.println(relativchances);
-		System.out.println(relativchances.get(0).size());
+//		System.out.println(chances);
+//		System.out.println(relativchances);
+//		System.out.println(relativchances.get(0).size());
 	}
 }

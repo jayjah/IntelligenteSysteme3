@@ -22,14 +22,14 @@ public class App {
 		
 		for (int i=0;i<9;i++) {
 			for (int j=0;j<9;j++) {
-				System.out.print(m_eval_alone.getChances().get(i).get(j));
+				System.out.print(m_eval_alone.getChances().get(i).get(j)+"\t");
 			}
 			System.out.println("");
 		}
 		
-		for (int i=0;i<3;i++) {
-			for (int j=0;j<3;j++) {
-				System.out.print(m_eval_alone.getRelativchances().get(i).get(j));
+		for (int i=0;i<9;i++) {
+			for (int j=0;j<9;j++) {
+				System.out.print(m_eval_alone.getRelativchances().get(i).get(j)+"\t");
 			}
 			System.out.println("");
 		}
