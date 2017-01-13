@@ -19,6 +19,20 @@ public class App {
 		MarkovChances m_eval_alone = new MarkovChances(fr_eval_alone, k);
 		MarkovChances m_train_group = new MarkovChances(fr_train_group, k);
 		MarkovChances m_eval_group = new MarkovChances(fr_eval_group, k);
-	
+		
+		for (int i=0;i<9;i++) {
+			for (int j=0;j<9;j++) {
+				System.out.print(m_eval_alone.getChances().get(i).get(j));
+			}
+			System.out.println("");
+		}
+		
+		for (int i=0;i<3;i++) {
+			for (int j=0;j<3;j++) {
+				System.out.print(m_eval_alone.getRelativchances().get(i).get(j));
+			}
+			System.out.println("");
+		}
+//		System.out.println(m_train_alone.getRelativchances());
 	}
 }
