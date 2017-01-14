@@ -4,30 +4,57 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.jscience.mathematics.number.Float64;
 import org.jscience.mathematics.vector.Float64Vector;
 
+/**
+ * This class holds all points in the given string as a route of the fish,
+ * a list with all distance vectors and a list with all qualified vectors.
+ * 
+ * @author Kim Oliver Schweikert, Markus Krebs
+ *
+ */
 public class Fish {
+	
+	/**
+	 * List with all distance vectors
+	 */
 	private LinkedList<Float64Vector> dvectors=null;
 	
+	/**
+	 * Qualified distance vectors
+	 */
 	private LinkedList<Float64Vector> cvectors=null;
 	
+	/**
+	 * 
+	 */
 	private LinkedList<Float64Vector> vectors=null;
 	
-	//points of the fish in same time passing
+	/**
+	 * Points of the fish in same time passing
+	 */
 	private List<Float64Vector> route = new ArrayList<Float64Vector>();
 
+	/**
+	 * Getter
+	 * @return route
+	 */
 	public List<Float64Vector> getRoute() {
 		return route;
 	}
 
+	/**
+	 * Setter
+	 * @param route
+	 */
 	public void setRoute(List<Float64Vector> route) {
 		this.route = route;
 	}
 	
 	/**
 	 * Constructor
-	 * Get the points out of the string.
+	 * Get the points out of the string, then generates the distance vectors of the points
+	 * and then the list with the qualified values'll be created out of the distance vectors.
 	 * @param route contains the points
 	 */
 	public Fish(String route) {
@@ -38,7 +65,6 @@ public class Fish {
 		}
 		this.generateVectors();
 		this.generatDVectors();
-		
 	}
 
 	public void generateCVectors(double k){
@@ -94,6 +120,9 @@ public class Fish {
 		}
 		return 3d;
 	}
+	
+	//Not in use
+	/*
 	public int compareToMarkovChances(ArrayList<MarkovChances> markovs, double k){
 		MarkovChances thisChances=new MarkovChances(new FishReader(this),k);
 		double[] sums=new double[markovs.size()];
@@ -120,4 +149,5 @@ public class Fish {
 		}
 		return minIndex;
 	}
+	*/
 }

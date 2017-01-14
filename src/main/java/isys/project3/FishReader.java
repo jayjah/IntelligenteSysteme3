@@ -5,23 +5,39 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-
-import org.jscience.mathematics.vector.Float64Vector;
-
+/**
+ * This class reads the given file and holds a list of fishes.
+ * @author Kim Oliver Schweikert, Markus Krebs
+ *
+ */
 public class FishReader {
 
-	// list of all fishes
+	/**
+	 * List of all fishes
+	 */
 	private ArrayList<Fish> fishList = null;
 
+	/**
+	 * Getter
+	 * @return fishlist
+	 */
 	public ArrayList<Fish> getFishList() {
 		return fishList;
 	}
 
+	/**
+	 * Setter
+	 * @param fishList
+	 */
 	public void setFishList(ArrayList<Fish> fishList) {
 		this.fishList = fishList;
 	}
 
+	/**
+	 * Constructor
+	 * Create a list of fishes with the given fish
+	 * @param f given fish
+	 */
 	public FishReader(Fish f)
 	{
 		this.fishList=new ArrayList<Fish>();
@@ -31,7 +47,6 @@ public class FishReader {
 	/**
 	 * Constructor
 	 * Reads the file and holds a list of all fishes in the file.
-	 * A fish is a line in the given file.
 	 * @param filename file to read
 	 */
 	public FishReader(String filename) {
@@ -63,12 +78,5 @@ public class FishReader {
 		for(Fish f : this.fishList)
 			f.generateCVectors(k);
 		
-	}
-	public List<Float64Vector> getFlatCatMovement(double k) {
-		ArrayList<Float64Vector> output = new ArrayList<Float64Vector>();
-		for (Fish fish : fishList) {
-			output.addAll(fish.cVectors(k));
-		}
-		return output;
 	}
 }
