@@ -7,7 +7,6 @@ import java.util.ArrayList;
 
 /**
  * Main
- * 
  * @author Kim Oliver Schweikert, Markus Krebs
  *
  */
@@ -22,6 +21,8 @@ public class App {
 
 		// Start value of k
 		double k = 0.10000;
+		int savepg = 0;
+		int savepa = 0;
 		int savep = 0;
 		double savek = k;
 
@@ -49,8 +50,10 @@ public class App {
 			int rightcount_alone = sim.simulate(k, fishlist_alone, m_train_alone, m_train_group);
 			int rightcount_group = sim.simulate(k, fishlist_group, m_train_group, m_train_alone);
 
-			if (savep < rightcount_group + rightcount_alone) {
+			if (savep < rightcount_group+ rightcount_alone) {
 				savep = rightcount_group + rightcount_alone;
+				savepa = rightcount_alone;
+				savepg = rightcount_group;
 				savek = k;
 			}
 			fw.append(Math.round(k * 1000.0) / 1000.0 + ";" + rightcount_alone + ";" + rightcount_group + ";"
@@ -60,8 +63,10 @@ public class App {
 			if (k > 20)
 				break;
 		}
-		System.out.println("Best k value found at: " + savek + " with matches: " + savep + " ("
-				+ (savep / (48.0 * 2.0)) * 100 + ")%");
+		System.out.println("Best k value found at: " + savek + " with matches in alone : " + savepa + " ("
+				+ (savepa / (48.0)) * 100 + ")%");
+		System.out.println("Best k value found at: " + savek + " with matches in group : " + savepg + " ("
+				+ (savepg / (48.0)) * 100 + ")%");
 		fw.close();
 	}
 
