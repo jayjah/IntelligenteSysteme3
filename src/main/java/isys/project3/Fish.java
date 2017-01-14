@@ -10,6 +10,11 @@ import org.jscience.mathematics.number.Float64;
 import org.jscience.mathematics.vector.Float64Vector;
 
 public class Fish {
+	private LinkedList<Float64Vector> dvectors=null;
+	
+	private LinkedList<Float64Vector> cvectors=null;
+	
+	private LinkedList<Float64Vector> vectors=null;
 	
 	//points of the fish in same time passing
 	private List<Float64Vector> route = new ArrayList<Float64Vector>();
@@ -33,23 +38,42 @@ public class Fish {
 			this.route.add(Float64Vector.valueOf(Double.parseDouble(s.split(",")[0]),
 					Double.parseDouble(s.split(",")[1])));
 		}
+		this.generateVectors();
+		this.generatDVectors();
+		
 	}
 
+	public void generateCVectors(double k){
+		this.cvectors=this.cVectors(k);
+		
+	}
+	public LinkedList<Float64Vector> getGeneratedCVectors(){
+		return this.cvectors;
+	}
+	
 	public LinkedList<Float64Vector> Vectors() {
+		return this.vectors;
+	}
+
+	public LinkedList<Float64Vector> dVectors() {
+		return this.dvectors;
+	}
+	
+	private void generateVectors(){
 		LinkedList<Float64Vector> vectors = new LinkedList<Float64Vector>();
 		for (int i = 0; i < route.size() - 1; i++) {
 			vectors.add(route.get(i + 1).minus(route.get(i)));
 		}
-		return vectors;
+		this.vectors=vectors;
+		
 	}
-
-	public LinkedList<Float64Vector> dVectors() {
+	private void generatDVectors() {
 		LinkedList<Float64Vector> vectors = Vectors();
 		LinkedList<Float64Vector> dVectors = new LinkedList<Float64Vector>();
 		for (int i = 0; i < vectors.size() - 1; i++) {
 			dVectors.add(vectors.get(i + 1).minus(vectors.get(i)));
 		}
-		return dVectors;
+		this.dvectors=dVectors;
 	}
 
 	public LinkedList<Float64Vector> cVectors(double k) {

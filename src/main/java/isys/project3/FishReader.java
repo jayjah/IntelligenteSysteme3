@@ -22,12 +22,12 @@ public class FishReader {
 		this.fishList = fishList;
 	}
 
-	
 	public FishReader(Fish f)
 	{
 		this.fishList=new ArrayList<Fish>();
 		this.fishList.add(f);
 	}
+	
 	/**
 	 * Constructor
 	 * Reads the file and holds a list of all fishes in the file.
@@ -51,6 +51,7 @@ public class FishReader {
 				if (s == null)
 					break;
 				this.fishList.add(new Fish(s));
+				
 			}
 			br.close();
 		} catch (IOException e) {
@@ -58,6 +59,11 @@ public class FishReader {
 		}
 	}
 
+	public void regenerateCVectors(double k){
+		for(Fish f : this.fishList)
+			f.generateCVectors(k);
+		
+	}
 	public List<Float64Vector> getFlatCatMovement(double k) {
 		ArrayList<Float64Vector> output = new ArrayList<Float64Vector>();
 		for (Fish fish : fishList) {
