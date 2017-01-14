@@ -1,7 +1,6 @@
 package main.java.isys.project3;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import org.jscience.mathematics.number.Float64;
 import org.jscience.mathematics.vector.Float64Vector;

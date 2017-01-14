@@ -1,13 +1,17 @@
 package main.java.isys.project3;
 
-import org.jscience.mathematics.number.Float64;
-import org.jscience.mathematics.vector.Float64Vector;
-import java.awt.List;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 public class App {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
+
+		// Filewriter
+		FileWriter fw = null;
+		fw = new FileWriter(new File("src/resources/validation.txt"), true);
+		fw.append("k right_alone right_group\n");
 
 		double k = 0.10000;
 		int savep = 0;
@@ -28,26 +32,27 @@ public class App {
 			ArrayList<Fish> fishlist_alone = fr_eval_alone.getFishList();
 			ArrayList<Fish> fishlist_group = fr_eval_group.getFishList();
 
-			// Counter für richtige
-
 			// Alle Fische iterieren
 			int rightcount_alone = sim.simulate(k, fishlist_alone, m_train_alone, m_train_group);
-			int	rightcount_group = sim.simulate(k, fishlist_group, m_train_group, m_train_alone);
-			if (savep < rightcount_group+rightcount_alone) {
-				savep = rightcount_group+rightcount_alone;
+			int rightcount_group = sim.simulate(k, fishlist_group, m_train_group, m_train_alone);
+			if (savep < rightcount_group + rightcount_alone) {
+				savep = rightcount_group + rightcount_alone;
 				savek = k;
 			}
-			
-			//System.out.println(m_train_group.getRelativchances());
-			//System.out.println(m_train_alone.getRelativchances());
+
+			fw.append(Math.round(k*1000.0)/1000.0 + " " + rightcount_alone + " " + rightcount_group + "\n");
+
+			// System.out.println(m_train_group.getRelativchances());
+			// System.out.println(m_train_alone.getRelativchances());
 			k += 0.1;
-			if (k > 100)
+			if (k > 20)
 				break;
 		}
-		System.out.println(
-				"Best k value found at: " + savek + " with matches: " + savep + " (" + (savep / (48.0*2.0)) * 100 + ")%");
+		System.out.println("Best k value found at: " + savek + " with matches: " + savep + " ("
+				+ (savep / (48.0 * 2.0)) * 100 + ")%");
 
 		// System.out.println(m_train_alone.getRelativchances());
+		fw.close();
 	}
-	
+
 }
