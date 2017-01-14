@@ -10,8 +10,8 @@ public class App {
 
 		// Filewriter
 		FileWriter fw = null;
-		fw = new FileWriter(new File("src/resources/validation.txt"), true);
-		fw.append("k right_alone right_group\n");
+		fw = new FileWriter(new File("src/resources/validation.csv"), false);
+		fw.append("k;right_alone;right_group;sum\r\n");
 
 		double k = 0.10000;
 		int savep = 0;
@@ -40,7 +40,7 @@ public class App {
 				savek = k;
 			}
 
-			fw.append(Math.round(k*1000.0)/1000.0 + " " + rightcount_alone + " " + rightcount_group + "\n");
+			fw.append(Math.round(k*1000.0)/1000.0 + ";" + rightcount_alone + ";" + rightcount_group + ";"+(rightcount_group+rightcount_alone)+"\r\n");
 
 			// System.out.println(m_train_group.getRelativchances());
 			// System.out.println(m_train_alone.getRelativchances());
