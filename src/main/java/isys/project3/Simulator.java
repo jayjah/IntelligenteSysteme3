@@ -7,8 +7,9 @@ import org.jscience.mathematics.number.Float64;
 import org.jscience.mathematics.vector.Float64Vector;
 
 /**
- * This class calculates out of the given k value, created chances tables(alone and group) and the given fish list
- * the number of correct qualified fishes out of the given fish list.
+ * This class calculates out of the given k value, created chances tables(alone
+ * and group) and the given fish list the number of correct qualified fishes out
+ * of the given fish list.
  * 
  * @author Kim Oliver Schweikert, Markus Krebs
  *
@@ -22,14 +23,17 @@ public class Simulator {
 
 	/**
 	 * 
-	 * @param k k-value
-	 * @param fishlist fishes to qualify
-	 * @param m_train_alone marvoc chances out of train_alone data
-	 * @param m_train_group marvoc chances out of train_group data
+	 * @param k
+	 *            k-value
+	 * @param fishlist
+	 *            fishes to qualify
+	 * @param m_train_alone
+	 *            marvoc chances out of train_alone data
+	 * @param m_train_group
+	 *            marvoc chances out of train_group data
 	 * @return number of correct qualified fishes
 	 */
-	public int simulate(double k, ArrayList<Fish> fishlist, MarkovChances m_train_alone,
-			MarkovChances m_train_group) {
+	public int simulate(double k, ArrayList<Fish> fishlist, MarkovChances m_train_alone, MarkovChances m_train_group) {
 		int rightcount = 0;
 		for (int i = 0; i < fishlist.size(); i++) {
 			// Aktueller Fisch

@@ -5,8 +5,10 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+
 /**
  * This class reads the given file and holds a list of fishes.
+ * 
  * @author Kim Oliver Schweikert, Markus Krebs
  *
  */
@@ -19,6 +21,7 @@ public class FishReader {
 
 	/**
 	 * Getter
+	 * 
 	 * @return fishlist
 	 */
 	public ArrayList<Fish> getFishList() {
@@ -27,6 +30,7 @@ public class FishReader {
 
 	/**
 	 * Setter
+	 * 
 	 * @param fishList
 	 */
 	public void setFishList(ArrayList<Fish> fishList) {
@@ -34,20 +38,21 @@ public class FishReader {
 	}
 
 	/**
-	 * Constructor
-	 * Create a list of fishes with the given fish
-	 * @param f given fish
+	 * Constructor Create a list of fishes with the given fish
+	 * 
+	 * @param f
+	 *            given fish
 	 */
-	public FishReader(Fish f)
-	{
-		this.fishList=new ArrayList<Fish>();
+	public FishReader(Fish f) {
+		this.fishList = new ArrayList<Fish>();
 		this.fishList.add(f);
 	}
-	
+
 	/**
-	 * Constructor
-	 * Reads the file and holds a list of all fishes in the file.
-	 * @param filename file to read
+	 * Constructor Reads the file and holds a list of all fishes in the file.
+	 * 
+	 * @param filename
+	 *            file to read
 	 */
 	public FishReader(String filename) {
 		BufferedReader br = null;
@@ -66,7 +71,7 @@ public class FishReader {
 				if (s == null)
 					break;
 				this.fishList.add(new Fish(s));
-				
+
 			}
 			br.close();
 		} catch (IOException e) {
@@ -74,9 +79,9 @@ public class FishReader {
 		}
 	}
 
-	public void regenerateCVectors(double k){
-		for(Fish f : this.fishList)
+	public void regenerateCVectors(double k) {
+		for (Fish f : this.fishList)
 			f.generateCVectors(k);
-		
+
 	}
 }
