@@ -48,9 +48,7 @@ public class MarkovChances {
 			
 				
 			}
-			if(i%10==0){
-			int p=0;
-			}
+			
 		}
 		/*
 		for(int i = 0; i < fcm.size()-1; i++){
