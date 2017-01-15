@@ -79,9 +79,13 @@ public class FishReader {
 		}
 	}
 
+	/**
+	 * Regenerate cVectors for all fishes
+	 * 
+	 * @param k k value
+	 */
 	public void regenerateCVectors(double k) {
 		for (Fish f : this.fishList)
 			f.generateCVectors(k);
-
 	}
 }

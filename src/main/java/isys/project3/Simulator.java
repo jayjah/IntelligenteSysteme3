@@ -37,9 +37,9 @@ public class Simulator {
 	public int simulate(double k, ArrayList<Fish> fishlist, MarkovChances m_train_alone, MarkovChances m_train_group) {
 		int rightcount = 0;
 		for (int i = 0; i < fishlist.size(); i++) {
-			// Aktueller Fisch
+			// Current fish
 			LinkedList<Float64Vector> cv_alone = fishlist.get(i).getGeneratedCVectors();
-			// Alle relativen Positionen iterieren.
+			// Iterate all cvectors of that fish
 			Float64 v = Float64.valueOf(1.0);
 			Float64 v2 = Float64.valueOf(1.0);
 			for (int j = 0; j < cv_alone.size() - 1; j++) {

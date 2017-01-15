@@ -26,7 +26,7 @@ public class Fish {
 	private LinkedList<Float64Vector> cvectors = null;
 
 	/**
-	 * 
+	 * All vectors 
 	 */
 	private LinkedList<Float64Vector> vectors = null;
 
@@ -71,23 +71,50 @@ public class Fish {
 		this.generatDVectors();
 	}
 
+	/**
+	 * generate all classified vectors for this fish
+	 * 
+	 * @param k
+	 *            k value
+	 */
 	public void generateCVectors(double k) {
 		this.cvectors = this.cVectors(k);
 
 	}
 
+	/**
+	 * generate all classified vectors for this fish
+	 * 
+	 * @return
+	 *            created CVectors
+	 */
 	public LinkedList<Float64Vector> getGeneratedCVectors() {
 		return this.cvectors;
 	}
 
+	
+	/**
+	 * getter
+	 * 
+	 * @return
+	 * 			all vectors
+	 */
 	public LinkedList<Float64Vector> Vectors() {
 		return this.vectors;
 	}
-
+	/**
+	 * 
+	 * @return
+	 * 			all distance vectors
+	 */
 	public LinkedList<Float64Vector> dVectors() {
 		return this.dvectors;
 	}
 
+	
+	/**
+	 * generate all Vectors
+	 */
 	private void generateVectors() {
 		LinkedList<Float64Vector> vectors = new LinkedList<Float64Vector>();
 		for (int i = 0; i < route.size() - 1; i++) {
@@ -97,6 +124,9 @@ public class Fish {
 
 	}
 
+	/**
+	 * generate all distance vectors
+	 */
 	private void generatDVectors() {
 		LinkedList<Float64Vector> vectors = Vectors();
 		LinkedList<Float64Vector> dVectors = new LinkedList<Float64Vector>();
@@ -106,6 +136,12 @@ public class Fish {
 		this.dvectors = dVectors;
 	}
 
+	/**
+	 * 
+	 * @param k k value
+	 * @return generated cVectors
+	 * 
+	 */
 	public LinkedList<Float64Vector> cVectors(double k) {
 		LinkedList<Float64Vector> dVectors = dVectors();
 		LinkedList<Float64Vector> cVectors = new LinkedList<Float64Vector>();
@@ -116,6 +152,12 @@ public class Fish {
 		return cVectors;
 	}
 
+	/**
+	 * 
+	 * @param input w (x or y of a distane vector)
+	 * @param k k value
+	 * @return classified value
+	 */
 	public double classify(double input, double k) {
 		if (input < -k) {
 			return 0d;
