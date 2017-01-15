@@ -57,8 +57,7 @@ public class App {
 				savek = k;
 			}
 			fw.append(Math.round(k * 1000.0) / 1000.0 + ";" + rightcount_alone + ";" + rightcount_group + ";"
-					+ (rightcount_group + rightcount_alone) + "\r\n");
-
+					+ ((rightcount_group + rightcount_alone)/2) + "\r\n");
 			k += 0.1;
 			if (k > 20)
 				break;
@@ -69,5 +68,4 @@ public class App {
 				+ (savepg / (48.0)) * 100 + ")%");
 		fw.close();
 	}
-
 }

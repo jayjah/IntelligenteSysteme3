@@ -22,7 +22,8 @@ public class Simulator {
 	}
 
 	/**
-	 * 
+	 * This method multiplies the marcov chances of the given markovchances through marcov chain
+	 * of the given fishes. After multiplication it checks weather it's a fish, who swims in a swarm or not.
 	 * @param k
 	 *            k-value
 	 * @param fishlist
